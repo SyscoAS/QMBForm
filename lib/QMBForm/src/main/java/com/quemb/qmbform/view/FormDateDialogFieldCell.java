@@ -42,7 +42,7 @@ public class FormDateDialogFieldCell extends FormDateFieldCell implements
     public void onCellSelected() {
         super.onCellSelected();
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),this,mCalendar.get(Calendar.YEAR),mCalendar.get(Calendar.MONTH),mCalendar.get(Calendar.DAY_OF_MONTH));
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),DatePickerDialog.THEME_HOLO_DARK,this,mCalendar.get(Calendar.YEAR),mCalendar.get(Calendar.MONTH),mCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
 
     }

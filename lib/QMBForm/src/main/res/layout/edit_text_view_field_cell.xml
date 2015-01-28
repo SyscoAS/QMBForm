@@ -20,6 +20,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="textMultiLine"
+            android:textColor="@color/form_cell_content"
 			android:ems="10"
 			android:id="@+id/editText"/>
 
