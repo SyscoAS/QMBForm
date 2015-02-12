@@ -38,7 +38,7 @@ public class FormTimeDialogFieldCell extends FormTimeFieldCell implements
     public void onCellSelected() {
         super.onCellSelected();
 
-        TimePickerDialog dialog = new TimePickerDialog(getContext(),TimePickerDialog.THEME_HOLO_DARK,this,getCalendar().get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE),true);
+        TimePickerDialog dialog = new TimePickerDialog(getContext(),TimePickerDialog.THEME_HOLO_LIGHT,this,getCalendar().get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE),true);
         dialog.show();
 
     }
