@@ -14,6 +14,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/switchControl"
         android:checked="false"
+        android:textColor="@color/section_cell_text"
+        android:textOn="@string/general_yes"
+        android:textOff="@string/general_no"
         tools:ignore="NewApi" />
 
 </LinearLayout>

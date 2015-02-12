@@ -5,4 +5,6 @@
     <string name="validation_is_required">is required</string>
     <string name="msg_check_form">Please check your entries</string>
     <string name="msg_x_is_required">is a required field</string>
+    <string name="general_yes">Yes</string>
+    <string name="general_no">No</string>
 </resources>
