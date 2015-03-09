@@ -5,7 +5,11 @@ import com.quemb.qmbform.descriptor.RowDescriptor;
 import com.quemb.qmbform.descriptor.Value;
 
 import android.content.Context;
+import android.os.Handler;
 import android.text.InputType;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,16 +18,14 @@ import android.widget.TextView;
  */
 public class FormEditTextViewFieldCell extends FormEditTextFieldCell {
 
-
     public FormEditTextViewFieldCell(Context context,
             RowDescriptor rowDescriptor) {
         super(context, rowDescriptor);
     }
 
-
-
     @Override
     protected int getResource() {
         return R.layout.edit_text_view_field_cell;
     }
+
 }

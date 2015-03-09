@@ -4,6 +4,8 @@ import com.quemb.qmbform.descriptor.FormDescriptor;
 import com.quemb.qmbform.descriptor.FormItemDescriptor;
 import com.quemb.qmbform.descriptor.SectionDescriptor;
 import com.quemb.qmbform.CellViewFactory;
+import com.quemb.qmbform.view.Cell;
+import com.quemb.qmbform.view.FormEditTextFieldCell;
 
 import android.content.Context;
 import android.view.View;
@@ -20,16 +22,18 @@ public class FormAdapter extends BaseAdapter {
     private FormDescriptor mFormDescriptor;
     private ArrayList<FormItemDescriptor> mItems;
     private Context mContext;
+    private int focusedEditTextRow = -1;
 
     public static FormAdapter newInstance(FormDescriptor formDescriptor, Context context){
         FormAdapter formAdapter = new FormAdapter();
         formAdapter.mFormDescriptor = formDescriptor;
         formAdapter.mContext = context;
+        formAdapter.setup();
+
         return formAdapter;
     }
 
-    @Override
-    public int getCount() {
+    public void setup() {
         mItems = new ArrayList<FormItemDescriptor>();
         for (SectionDescriptor sectionDescriptor : mFormDescriptor.getSections()){
 
@@ -39,7 +43,10 @@ public class FormAdapter extends BaseAdapter {
 
             mItems.addAll(sectionDescriptor.getRows());
         }
-
+    }
+    
+    @Override
+    public int getCount() {
         return mItems.size();
     }
 
@@ -56,6 +63,24 @@ public class FormAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return CellViewFactory.getInstance().createViewForFormItemDescriptor(mContext,getItem(position));
+        Cell cell = CellViewFactory.getInstance().createViewForFormItemDescriptor(mContext,getItem(position));
+        if (cell instanceof FormEditTextFieldCell) {
+            processEditTextCell((FormEditTextFieldCell)cell, position);
+        }
+        return cell;
+    }
+
+    private void processEditTextCell(FormEditTextFieldCell cell, final int row) {
+        if (row == focusedEditTextRow) {
+            cell.getEditView().requestFocus();
+        }
+        cell.getEditView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    focusedEditTextRow = row;
+                }
+            }
+        });
     }
 }

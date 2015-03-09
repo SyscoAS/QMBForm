@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -56,7 +57,6 @@ public class FormEditTextFieldCell extends FormTitleFieldCell {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-
     }
 
     protected void onEditTextChanged(String string) {
@@ -76,7 +76,6 @@ public class FormEditTextFieldCell extends FormTitleFieldCell {
         updateEditView();
 
         mEditView.setEnabled(!getRowDescriptor().getDisabled());
-
     }
 
     protected void updateEditView() {
@@ -96,6 +95,10 @@ public class FormEditTextFieldCell extends FormTitleFieldCell {
 
     public EditText getEditView() {
         return mEditView;
+    }
+
+    public void focusEditText() {
+        mEditView.requestFocus();
     }
 
 }
